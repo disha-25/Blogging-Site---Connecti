@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+ body{
+    margin: 0;
+    #common-header{
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 12px 0 45px -4px #D5D8DC;
+       
+
+
+   
+
+    .logo{
+       width:30%;
+       text-align: left;
+
+    }
+
+    .app-name{
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-top: 15px;
+    color:#C0392B;
+    
+    font-size: 18px;
+    }
+
+    .auth-info-links{
+        width: 40%;
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        p:first-child{
+        margin-right: 18px;
+        margin-top: 20px;
+        margin-left: 20px;
+
+        }
+
+        .si{
+        background: #45B39D;
+        margin-bottom: 45px;
+        border-radius: 8px;
+        }
+        .su{
+        background: #73C6B6;
+        margin-bottom: 45px;
+        border-radius: 8px;
+        }
+        .so{
+          background: #16A085  ;
+        margin-bottom: 45px;
+        border-radius: 8px;
+
+        }
+
+    }
+
+    }
+
+
+
+
+ }

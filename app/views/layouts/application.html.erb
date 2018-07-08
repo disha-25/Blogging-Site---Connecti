@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+</style>
+    <title>Connecti</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+
+  	<div id="common-header">
+  		<div class="logo">
+              <img width="100"  src="https://i.pinimg.com/736x/fc/74/7e/fc747e45eb0dda8006961b4c956f7e49--gfx-design-design-logo.jpg">
+  		</div>
+
+      <div class="app-name">
+        <h1>CONNECTi</h1>
+      </div>
+
+  		<div class="auth-info-links">
+  			<% if model_signed_in? %>   <!-- if user is signed in -->
+  			<p><%= current_model.email %></p>
+  			<div class="so"><p><%= link_to "Sign Out" , destroy_model_session_path,method: :delete %></p></div>
+  			<% else %>
+  			<div class="si"><p><%=link_to "Sign In" , new_model_session_path %></p></div>
+        
+  			<div class="su"><p><%=link_to "Sign Up" , new_model_registration_path %></p></div>
+  			<%end%>
+
+
+  		</div>
+
+  	</div>
+    <%= yield %>
+  </body>
+</html>

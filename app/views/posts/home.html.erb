@@ -1,0 +1,113 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Yatra+One');
+@import url('https://fonts.googleapis.com/css?family=Lobster|Satisfy');
+</style>
+<main id="posts-home">
+<div class="group">Group Links</div>
+<div class="deewar-posts">
+	<div class="new-post-form">
+		<% if model_signed_in? %>
+	<%= form_for @post do |f| %>
+		
+		<%= f.text_area :content , placeholder: "Write Something here..." , :rows => 6, :cols => 40%><br>
+		<div class="share"><%= f.submit 'Share:)' , style: "background-color: #5DADE2" %></div>
+		<% end %>
+		<% end %>
+		
+
+	</div>
+	<br>
+	<br>
+		<div class="trend"><strong><%= "Trending Posts" %></strong></div>
+		<br>
+		<br>
+
+
+	<div class="post" >
+		<ul class="post-list" style="list-style: none">
+			<% @posts.reverse.each do |post| %>
+			<li>
+				<p>
+			<b><%= post.model.email %></b>
+			<% if model_signed_in? && post.model.id == current_model.id %>
+			<span id="delete-btn"><%= link_to "Delete Post" , destroy_post_path(post.id) , method: :delete%></span>
+			<%end %>
+			<p>
+				<p><%= post.content %>
+				
+
+					<% if model_signed_in? %>
+						<div class="like">
+							<%= link_to post.like_status_string(current_model.id), toggle_like_path(post.id), method: :post %>
+						</div>
+					<% end %>
+					<br>
+					<i><%= post.likes.length  %>  liked this </i>
+				
+
+		
+
+		
+				
+				
+
+			<div class="comment">
+				<div class="cmt">Comments</div>
+				<br>
+				<%if model_signed_in? %>
+				<%= form_for @comment do |f| %>
+		<%= f.hidden_field :post_id, value: post.id %>
+		<%= f.text_area :content , placeholder:"Write a comment..." %><br>
+		<%= f.submit "Comment"  %>
+				
+
+		<% end %>
+
+			<% end %>
+<div class="comment-list">
+			<ul>
+				<% post.comments.reverse.each do |comment| %>
+				
+
+
+				<li>
+									
+									<%= comment.content %>
+										<i><sub><%=comment.model.email%></sub></i>
+									
+									
+										<% if model_signed_in? %>
+
+										<%= comment.likes.length%>
+
+										 <%= link_to comment.like_status_string(current_model.id),toggleC_like_path(comment.id) , {:style=>'color:#1F618D;'}%>
+
+										
+
+										
+									<%end%>
+										<% if model_signed_in? && comment.model_id ==  current_model.id %>
+											<%= link_to "Delete", destroy_comment_path(comment.id), method: :delete %>
+										<% end %>
+									
+									
+									
+									
+
+								</li>
+				<%end%>
+
+			</ul>
+		</div>
+	</div>
+</li>
+<%end%>
+</ul>
+</div>
+</div>
+
+
+
+	<div class="frnds">Friends</div>
+</main>
